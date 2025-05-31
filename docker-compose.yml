@@ -14,6 +14,8 @@ services:
       - ./mysql/init:/docker-entrypoint-initdb.d
       - mysql_data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - my-network
 
   backend:
     build: ./backend
@@ -29,7 +31,8 @@ services:
       - mysql
     volumes:
       - ./backend:/app
-      - /app/vendor
+    networks:
+      - my-network
 
   frontend:
     build: ./frontend
@@ -40,6 +43,12 @@ services:
       - /app/node_modules
     environment:
       - REACT_APP_API_URL=http://localhost:8080
+    networks:
+      - my-network
 
 volumes:
   mysql_data:
+
+networks:
+  my-network:
+    driver: bridge
