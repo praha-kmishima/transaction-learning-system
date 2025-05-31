@@ -35,7 +35,7 @@ const App: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [transactions, setTransactions] = useState<Map<string, TransactionState>>(new Map());
   const [logs, setLogs] = useState<TransactionLog[]>([]);
-  const [ws, setWs] = useState<WebSocket | null>(null);
+  const [, setWs] = useState<WebSocket | null>(null);
   const [isolationLevel, setIsolationLevel] = useState<string>('REPEATABLE-READ');
 
   useEffect(() => {
