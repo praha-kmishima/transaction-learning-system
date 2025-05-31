@@ -1,0 +1,383 @@
+/* App.css */
+.app {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .app-header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .app-header h1 {
+    margin: 0;
+    color: #333;
+    font-size: 1.8rem;
+  }
+  
+  .isolation-level-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .isolation-level-selector label {
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .isolation-level-selector select {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+  
+  .isolation-level-selector select:focus {
+    border-color: #667eea;
+    outline: none;
+  }
+  
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    padding: 2rem;
+    min-height: calc(100vh - 100px);
+  }
+  
+  .left-panel, .right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* シナリオボタン */
+  .scenario-buttons {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .scenario-buttons h3 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 0.5rem;
+  }
+  
+  .scenario-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+  }
+  
+  .scenario-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+  
+  .scenario-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .scenario-btn.dirty-read {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  }
+  
+  /* ユーザーテーブル */
+  .users-table {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .users-table h3 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 0.5rem;
+  }
+  
+  .users-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .users-table th,
+  .users-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .users-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .user-row {
+    transition: background-color 0.3s ease;
+  }
+  
+  .user-row:hover {
+    background: #f8f9fa;
+  }
+  
+  /* 右パネル */
+  .transactions-panel,
+  .logs-panel {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+  }
+  
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .panel-header h3 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .clear-btn {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    color: #666;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  .clear-btn:hover {
+    background: #f5f5f5;
+    border-color: #bbb;
+  }
+  
+  /* トランザクションカード */
+  .transactions-list {
+    padding: 1rem 1.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .transaction-card {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s ease;
+  }
+  
+  .transaction-card.active {
+    background: #e3f2fd;
+    border-left-color: #2196f3;
+    animation: pulse 2s infinite;
+  }
+  
+  .transaction-card.committed {
+    background: #e8f5e8;
+    border-left-color: #4caf50;
+  }
+  
+  .transaction-card.rollbacked {
+    background: #ffebee;
+    border-left-color: #f44336;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(33, 150, 243, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0); }
+  }
+  
+  .transaction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tx-id {
+    font-weight: 600;
+    color: #333;
+    font-family: 'Courier New', monospace;
+  }
+  
+  .tx-status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .tx-status.active {
+    background: #2196f3;
+    color: white;
+  }
+  
+  .tx-status.committed {
+    background: #4caf50;
+    color: white;
+  }
+  
+  .tx-status.rollbacked {
+    background: #f44336;
+    color: white;
+  }
+  
+  .tx-isolation {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+  }
+  
+  /* ログパネル */
+  .logs-panel h3 {
+    margin: 0;
+    padding: 1.5rem;
+    color: #333;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .logs-container {
+    padding: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .log-entry {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    border-left: 3px solid #ddd;
+    background: #f9f9f9;
+    transition: all 0.3s ease;
+  }
+  
+  .log-entry.transaction_started {
+    border-left-color: #2196f3;
+    background: #e3f2fd;
+  }
+  
+  .log-entry.query_executed {
+    border-left-color: #ff9800;
+    background: #fff3e0;
+  }
+  
+  .log-entry.transaction_committed {
+    border-left-color: #4caf50;
+    background: #e8f5e8;
+  }
+  
+  .log-entry.transaction_rollbacked {
+    border-left-color: #f44336;
+    background: #ffebee;
+  }
+  
+  .log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .log-tx-id {
+    font-weight: 600;
+    color: #333;
+    font-family: 'Courier New', monospace;
+  }
+  
+  .log-timestamp {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .log-message {
+    font-weight: 500;
+  }
+  
+  .log-query {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    margin-bottom: 0.5rem;
+    word-break: break-all;
+  }
+  
+  .log-result {
+    background: rgba(0, 0, 0, 0.02);
+    padding: 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: #555;
+    white-space: pre-wrap;
+  }
+  
+  /* レスポンシブ対応 */
+  @media (max-width: 1024px) {
+    .main-content {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+    
+    .left-panel {
+      order: 1;
+    }
+    
+    .right-panel {
+      order: 2;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .app-header {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+    
+    .main-content {
+      padding: 1rem;
+      gap: 1rem;
+    }
+  }
